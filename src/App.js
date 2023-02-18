@@ -4,17 +4,17 @@ import { Perf } from "r3f-perf";
 import { useControls } from "leva";
 const App = () => { 
   const { color } = useControls({
-    color : "red"
+    color : "white"
   })
   return (
     <div className="app">
       <Canvas>
         <OrbitControls makeDefault/>
         <Perf position="top-left"/>
-
+        <color args={[color]} attach="background"/>
         <mesh scale={2}>
           <boxGeometry/>
-          <meshBasicMaterial color={color}/>
+          <meshNormalMaterial/>
         </mesh>
       </Canvas>
     </div>
