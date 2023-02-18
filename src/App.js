@@ -1,17 +1,21 @@
-import './App.css';
-import { Canvas } from '@react-three/fiber';
-import Controls from './utils/three/controls.three';
-import StatsPanel from './utils/three/stats.three';
-function App() {
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
+import { Perf } from "r3f-perf";
+import { useControls } from "leva";
+const App = () => { 
+  const { color } = useControls({
+    color : "red"
+  })
   return (
-    <div className="App">
+    <div className="app">
       <Canvas>
-        <mesh>
+        <OrbitControls makeDefault/>
+        <Perf position="top-left"/>
+
+        <mesh scale={2}>
           <boxGeometry/>
-          <meshNormalMaterial/>
+          <meshBasicMaterial color={color}/>
         </mesh>
-        <StatsPanel/>
-        <Controls/>
       </Canvas>
     </div>
   );
